@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   Animated,
   View,
+  Image,
   Text,
   TextInput,
   TouchableHighlight,
@@ -9,10 +10,19 @@ import {
 } from 'react-native'
 import { styles } from './styles'
 import { FadeInView } from './FadeInView'
+import { CustomTabBar } from './CustomTabBar'
+import Movies from './Movies'
+import Shopping from './Shopping'
+import Home from './Home'
+import Dogs from './Dogs'
+import Food from './Food'
 import LinearGradient from 'react-native-linear-gradient'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
-import Icon from 'react-native-vector-icons/FontAwesome';
-const myIcon = (<Icon name="heartbeat" size={30} color="#900" />)
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
+const myIcon = (<Icon name="cake" size={30} color="#900" />)
+const myIconLabel = `${myIcon}`
+const crown = require('../../assets/images/Crown-23-large-red.png')
 
 export class Princess23 extends Component {
   constructor () {
@@ -30,44 +40,18 @@ export class Princess23 extends Component {
         tabBarUnderlineStyle={{ backgroundColor: 'white' }}
         tabBarPosition="overlayBottom"
         ref={(tabView) => {this.tabView = tabView }}
+        renderTabBar={() => <CustomTabBar
+                tabBarTextStyle={{ color: 'white' }}
+                tabBarUnderlineStyle={{ backgroundColor: 'white' }}
+                tabBarPosition="overlayBottom"
+        />}
       >
-        <View tabLabel={"Sweatbook"} style={styles.container}>
-        <FadeInView fadeDuration={500} fadeDelay={0}>
-          <Text style={styles.welcome}>
-            Sweatbook {myIcon}
-          </Text>
-        </FadeInView>
-        <FadeInView fadeDuration={500} fadeDelay={500}>
-          <Text style={styles.instructions}>
-            Log your fitness.{/*It's time for another adventure.*/}
-          </Text>
-          <Text style={styles.instructions}>
-            Because you're fat.{/*Press Start to begin!!*/}
-          </Text>
-        </FadeInView>
-        <FadeInView fadeDuration={500} fadeDelay={1300}>
-          <TouchableHighlight style={styles.startButton} onPress={() => this.tabView.goToPage(2)}>
-            <Text style={styles.startButtonText}>
-              Start
-            </Text>
-          </TouchableHighlight>
-        </FadeInView>
-        </View>
-        <View tabLabel="Second">
-          <Text style={styles.welcome}>
-            Jobin
-          </Text>
-        </View>
-        <View tabLabel="Third">
-          <Text style={styles.welcome}>
-            Loki
-          </Text>
-        </View>
-        <View tabLabel="Fourth">
-          <Text style={styles.welcome}>
-            Jobin
-          </Text>
-        </View>
+        <Movies tabLabel="clapperboard" style={styles.container} />
+        <Shopping tabLabel="shopping-bag" />
+        <Home tabLabel="home" />
+        <Dogs tabLabel="baidu" />
+        <Food tabLabel="yelp" />
+
         </ScrollableTabView>
       </LinearGradient>
 

@@ -9,9 +9,9 @@ import {
   AppRegistry,
   StyleSheet
 } from 'react-native';
-import { Princess23 } from './src/app/Princess23'
+import { Root } from './src/app/Root'
 
-const Main = () => (<Princess23 />)
+const Main = () => (<Root />)
 
 
 AppRegistry.registerComponent('Princess23', () => Main);
